@@ -5,6 +5,8 @@ const path = require("path");
 const logger = require("./utils/logger");
 const morgan = require("morgan");
 const helmet = require("helmet");
+const bodyParser = require('body-parser');
+
 
 /** Settings */
 app.set("PORT", process.env.PORT || 3000);
@@ -25,5 +27,6 @@ app.use(helmet());
 /** Routes */
 app.use("/api/auth", require("./routes/authRouter"));
 app.use("/api/chat", require("./routes/chat"));
+app.use("/integrations/facebook", require("./routes/integrations/facebookMessenger"));
 
 module.exports = app;
